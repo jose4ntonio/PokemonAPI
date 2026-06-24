@@ -11,7 +11,6 @@ public class PokemonService {
 
     private final PokemonRepository pokemonRepository;
 
-    // Inyección por constructor (Recomendado en Spring moderno, no requiere @Autowired)
     public PokemonService(PokemonRepository pokemonRepository) {
         this.pokemonRepository = pokemonRepository;
     }
@@ -21,7 +20,6 @@ public class PokemonService {
     }
 
     public Optional<Pokemon> obtenerPorId(Long id) {
-        // Devolver un Optional es mejor práctica para que el Controlador decida qué responder (ej. 404 Not Found)
         return pokemonRepository.findById(id);
     }
 
@@ -58,11 +56,10 @@ public class PokemonService {
     }
 
     public boolean eliminarPokemon(Long id) {
-        // Validamos si existe antes de eliminar para evitar caídas del servidor
         if (pokemonRepository.existsById(id)) {
             pokemonRepository.deleteById(id);
-            return true; // Eliminación exitosa
+            return true;
         }
-        return false; // No existía el Pokémon
+        return false;
     }
 }

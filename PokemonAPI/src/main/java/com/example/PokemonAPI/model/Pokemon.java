@@ -24,5 +24,4 @@ public class Pokemon {
     private Integer defensa;
     private String descripcion;
     private String imagenUrl;
-
 }
